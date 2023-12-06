@@ -1,0 +1,496 @@
+{
+	"info": {
+		"_postman_id": "3d0483f7-806d-4cde-93c1-de16525aaa9c",
+		"name": "Evento",
+		"description": "Bem-vindo à documentação da API de Eventos, a solução completa para gerenciamento e registro de eventos, participantes, administradores e locais. Esta API foi projetada para fornecer acesso programático a todas as funcionalidades do nosso sistema de registro de eventos, permitindo que desenvolvedores integrem nossos serviços em suas próprias aplicações ou serviços.\n\nA API oferece uma série de endpoints que permitem operações CRUD (Criar, Ler, Atualizar, Deletar) em entidades como eventos, participantes, administradores e locais. Você pode criar novos eventos, registrar participantes, gerenciar informações de administradores e muito mais, tudo através de chamadas HTTP simples.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Attendees Controller",
+			"item": [
+				{
+					"name": "/attendees",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/attendees",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"attendees"
+							]
+						},
+						"description": "Retorna uma página de participantes. Os parâmetros de consulta permitem personalizar a busca, a paginação e a ordenação dos resultados.\n\n- **Parâmetros**:\n    \n    - `page`: Número da página a ser recuperada.\n        \n    - `linesPerPage`: Número de registros por página.\n        \n    - `direction`: Direção da ordenação (ASC ou DESC).\n        \n    - `orderBy`: Campo pelo qual os resultados devem ser ordenados.\n        \n    - `name`: Filtra participantes pelo nome.\n        \n    - `email`: Filtra participantes pelo email."
+					},
+					"response": []
+				},
+				{
+					"name": "/attendees",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {  \r\n        \"name\": \"Maria Antonio\",\r\n        \"email\": \"maria@gmail.com\",\r\n        \"balance\": 100.12 \r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/attendees",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"attendees"
+							]
+						},
+						"description": "Cria um novo participante no sistema.\n\n- **Body**:\n    \n    - `AttendInsertDTO`: Objeto DTO contendo os dados necessários para criar um novo participante."
+					},
+					"response": []
+				},
+				{
+					"name": "/attendees/{id}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/attendees/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"attendees",
+								"5"
+							]
+						},
+						"description": "Obtém os detalhes de um participante específico pelo seu ID.\n\n- **Path Variable**:\n    \n    - `id`: O ID do participante."
+					},
+					"response": []
+				},
+				{
+					"name": "/attendees/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/attendees/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"attendees",
+								"4"
+							]
+						},
+						"description": "Remove um participante do sistema pelo seu ID.\n\n- **Path Variable**:\n    \n    - `id`: O ID do participante a ser removido."
+					},
+					"response": []
+				},
+				{
+					"name": "/attendees/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {  \r\n        \"balance\": 200.22\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/attendees/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"attendees",
+								"5"
+							]
+						},
+						"description": "Atualiza os detalhes de um participante existente.\n\n- **Path Variable**:\n    - `id`: O ID do participante a ser atualizado.\n- **Body**:\n    \n    - `AttendUpdateDTO`: Objeto DTO contendo o dado atualizado para o participante."
+					},
+					"response": []
+				}
+			],
+			"description": "O `Attendees Controller` é responsável pelo gerenciamento de participantes dentro da nossa API de Eventos. Ele permite que os usuários executem operações CRUD em participantes, facilitando a gestão de quem está participando de quais eventos."
+		},
+		{
+			"name": "Admin Controller",
+			"item": [
+				{
+					"name": "/admins",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/admins",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admins"
+							]
+						},
+						"description": "Lista todos os administradores, com suporte a paginação e filtros por nome e email.\n\n- **Parâmetros**:\n    \n    - `page`: Número da página de resultados.\n        \n    - `linesPerPage`: Quantidade de registros por página.\n        \n    - `direction`: Direção da ordenação (ASC ou DESC).\n        \n    - `orderBy`: Critério de ordenação dos resultados.\n        \n    - `name`: Filtro de busca por nome.\n        \n    - `email`: Filtro de busca por email."
+					},
+					"response": []
+				},
+				{
+					"name": "/admins",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    { \r\n        \"name\": \"Uchoas\",\r\n        \"email\": \"uchoas@gmail.com\",\r\n        \"phoneNumber\": \"19 97521-2135\" \r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/admins",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admins"
+							]
+						},
+						"description": "Cria um novo registro de administrador no sistema.\n\n- **Body**:\n    \n    - `AdminInsertDTO`: Objeto DTO com os dados necessários para o cadastro de um novo administrador."
+					},
+					"response": []
+				},
+				{
+					"name": "/admins/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/admins/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admins",
+								"2"
+							]
+						},
+						"description": "Recupera os detalhes de um administrador específico pelo seu ID.\n\n- **Path Variable**:\n    \n    - `id`: Identificador único do administrador."
+					},
+					"response": []
+				},
+				{
+					"name": "/admins/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/admins/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admins",
+								"2"
+							]
+						},
+						"description": "Exclui um administrador do sistema baseado em seu ID.\n\n- **Path Variable**:\n    \n    - `id`: Identificador único do administrador a ser excluído"
+					},
+					"response": []
+				},
+				{
+					"name": "/admins/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {  \r\n        \"phoneNumber\": \"19 97521-7777\" \r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/admins/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"admins",
+								"1"
+							]
+						},
+						"description": "Atualiza informações de um administrador existente.\n\n- **Path Variable**:\n    \n    - `id`: Identificador único do administrador a ser atualizado.\n        \n- **Body**:\n    \n    - `AdminUpdateDTO`: Objeto DTO com o dado atualizado do administrador."
+					},
+					"response": []
+				}
+			],
+			"description": "O `AdminController` é a interface de gerenciamento para administradores no sistema de Eventos. Ele fornece funcionalidades completas de CRUD para administradores, permitindo que operadores do sistema gerenciem informações de usuários com privilégios de administração."
+		},
+		{
+			"name": "Place Controller",
+			"item": [
+				{
+					"name": "/places",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/places",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"places"
+							]
+						},
+						"description": "Este endpoint lista todos os locais disponíveis, com opções de paginação e filtragem por endereço.\n\n- **Parâmetros**:\n    \n    - `page`: Número da página atual na listagem paginada.\n        \n    - `linesPerPage`: Quantidade de locais exibidos por página.\n        \n    - `direction`: Direção da ordenação dos resultados (ASC ou DESC).\n        \n    - `orderBy`: Campo pelo qual os resultados serão ordenados.\n        \n    - `address`: Filtro de busca por endereço."
+					},
+					"response": []
+				},
+				{
+					"name": "/places",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"city\": \"São Paulo\",\r\n    \"address\": \"Rua AB, 572\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/places",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"places"
+							]
+						},
+						"description": "Cria um novo local no sistema. Este endpoint aceita um corpo de requisição com os detalhes do local a ser inserido.\n\n- **Body**:\n    \n    - `PlaceInsertDTO`: Objeto DTO contendo as informações necessárias para o cadastro de um novo local."
+					},
+					"response": []
+				},
+				{
+					"name": "/places/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/places/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"places",
+								"4"
+							]
+						},
+						"description": "Obtém os detalhes de um local específico utilizando seu ID como referência.\n\n- **Path Variable**:\n    \n    - `id`: Identificador único do local."
+					},
+					"response": []
+				},
+				{
+					"name": "/places/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/places/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"places",
+								"4"
+							]
+						},
+						"description": "Remove um local do sistema com base em seu ID.\n\n- **Path Variable**:\n    \n    - `id`: Identificador único do local a ser removido."
+					},
+					"response": []
+				}
+			],
+			"description": "O `PlaceController` é responsável pela gestão dos locais de eventos dentro do sistema. Ele permite que os usuários realizem operações de criação, leitura e exclusão de locais, facilitando o gerenciamento de onde os eventos ocorrerão."
+		},
+		{
+			"name": "Event Controller",
+			"item": [
+				{
+					"name": "/events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"events"
+							]
+						},
+						"description": "Este endpoint permite a listagem de todos os eventos, com suporte a paginação e filtragem por categoria, contato por e-mail, nome e preço do ingresso.\n\n- **Parâmetros**:\n    \n    - `page`: Número da página de resultados.\n        \n    - `linesPerPage`: Quantidade de eventos por página.\n        \n    - `direction`: Direção da ordenação (ASC ou DESC).\n        \n    - `orderBy`: Critério de ordenação dos resultados.\n        \n    - `category`: Filtro por categoria do evento.\n        \n    - `emailContact`: Filtro por e-mail de contato do evento.\n        \n    - `name`: Filtro por nome do evento.\n        \n    - `priceTicket`: Filtro por preço do ingresso."
+					},
+					"response": []
+				},
+				{
+					"name": "/events",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"category\": \"CINEMA\",\r\n  \"name\": \"Circ of Magic\",\r\n  \"startTime\": \"12:00:00\",\r\n  \"endTime\": \"18:00:00\",\r\n  \"emailContact\": \"joaouchoas@gmail.com\",\r\n  \"amountVIPTickets\": 300,\r\n  \"amountCommonTickets\": 10000,\r\n  \"priceTicket\": -100.00,\r\n  \"seats\": [\r\n    {\r\n      \"rowV\": \"A\",\r\n      \"number\": 1\r\n    },\r\n    {\r\n      \"rowV\": \"A\",\r\n      \"number\": 2\r\n    },\r\n    {\r\n      \"rowV\": \"B\",\r\n      \"number\": 3\r\n    }\r\n  ]\r\n}\r\n\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/events/places/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"events",
+								"places",
+								"1"
+							]
+						},
+						"description": "Cria um novo evento associado a um local específico. O corpo da requisição deve conter os detalhes do evento.\n\n- **Path Variable**:\n    \n    - `placeId`: Identificador único do local onde o evento ocorrerá.\n        \n- **Body**:\n    \n    - `EventInsertDTO`: Objeto DTO com as informações necessárias para a criação de um novo evento."
+					},
+					"response": []
+				},
+				{
+					"name": "/events/{id}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/events/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"events",
+								"3"
+							]
+						},
+						"description": "Recupera os detalhes de um evento específico pelo seu ID.\n\n- **Path Variable**:\n    \n    - `id`: Identificador único do evento."
+					},
+					"response": []
+				},
+				{
+					"name": "/events/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/events/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"events",
+								"2"
+							]
+						},
+						"description": "Exclui um evento com base em seu ID.\n\n- **Path Variable**:\n    \n    - `id`: Identificador único do evento a ser excluído."
+					},
+					"response": []
+				}
+			],
+			"description": "O `EventController` é a interface de programação de aplicativos para gerenciar eventos no sistema. Ele fornece funcionalidades para listar, recuperar detalhes, criar e excluir eventos, permitindo um gerenciamento eficiente dos eventos planejados."
+		}
+	]
+}

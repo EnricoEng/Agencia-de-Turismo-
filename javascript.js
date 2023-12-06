@@ -24,3 +24,13 @@ fetch('https://api.exemplo.com/dados', {
 .catch((error) => {
   console.error('Erro:', error);
 });
+
+function comprar() {
+  // Código para realizar a compra
+  alert('Compra realizada com sucesso!');
+}
+
+function cancelar() {
+  // Código para cancelar a compra
+  alert('Compra cancelada com sucesso!');
+}

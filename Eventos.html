@@ -3,9 +3,9 @@
 <head>
     <title>Eventos Disponíveis</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="javascript.js"></script>
+
 </head>
-<body onload="fetchAPIs()">
+<body onload="fetchAPIsEventos()">
 
     <!-- Menu -->
     <div class="menu">
@@ -21,9 +21,10 @@
     <h1>Turismo Acabou A Faculdade</h1>
     <p>Seu conteúdo.</p>
 
-
+    <script src="javascript.js"></script>
      <!-- Grade -->
-     <div class="grid-container">
+     <div class="grid-container"> -->
+        
         <!-- Você pode repetir o código abaixo para cada item que deseja adicionar à grade -->
         <div class="grid-item">
             <img src="./Imgs/free_speech_week.png" alt="Free Speech Week">
@@ -69,41 +70,7 @@
             <p>Preço Não Informado</p>
             <button type="button" onclick="comprar()">Comprar</button>
             <button type="button" onclick="cancelar()">Cancelar</button>
-        </div>
+        </div> 
     </div>
-
-
-     <!-- Grade -->
-     <div class="grid-container" id="grid-container">
-        <!-- Os itens da grade serão adicionados aqui pelo JavaScript -->
-    </div>
-
-
-
-
-    <!--Outra opção de como pode ser feito-->
-    <!-- <script>
-        // Lista de eventos
-        var eventos = [
-            {imagem: 'caminho-para-a-imagem-do-evento-1', horario: 'Horário e Data do Evento 1', preco: 'Preço do Evento 1'},
-            {imagem: 'caminho-para-a-imagem-do-evento-2', horario: 'Horário e Data do Evento 2', preco: 'Preço do Evento 2'},
-            // Adicione mais eventos aqui
-        ];
-
-        // Preencher a grade com os eventos
-        var gridContainer = document.getElementById('grid-container');
-        for (var i = 0; i < eventos.length; i++) {
-            var gridItem = document.createElement('div');
-            gridItem.className = 'grid-item';
-            gridItem.innerHTML = '<img src="' + eventos[i].imagem + '" alt="Imagem do Evento">' +
-                                 '<p>' + eventos[i].horario + '</p>' +
-                                 '<p>' + eventos[i].preco + '</p>';
-            gridContainer.appendChild(gridItem);
-        }
-    </script> -->
-
-
-
-
 </body>
 </html>
